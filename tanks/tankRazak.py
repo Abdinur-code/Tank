@@ -12,8 +12,8 @@ text1 = font.render('W I N', True, (255, 255, 0))
 text2 = font.render('B L U E', True, (0, 0, 205))
 text3 = font.render('R E D ', True, (225, 0, 0))
 #--------trueFALSE-------BOOL
-change1 = True
-change2 = True
+tt1 = True
+tt2 = True
 #--------------sounds------------
 shoot = pygame.mixer.Sound('fire.wav')
 fon = pygame.mixer.Sound('background.wav')
@@ -85,7 +85,8 @@ blue = Tank(100, 100, 1, (0, 0, 205), pygame.K_d, pygame.K_a, pygame.K_w, pygame
 tanks = [red, blue ]
 bullet1 = Bullets(820, 620, 0, 0)
 bullet2 = Bullets(820, 620 , 0,0)
-FPS = 100 #FPS
+#------FPS
+FPS = 120 
 clock = pygame.time.Clock ()
 fon.play(-1)
 while mainloop:
@@ -157,20 +158,20 @@ while mainloop:
         bullet1.x = 810
         bullet1.y = 610
         heart1 -= 1
-        change1 = True
+        tt1 = True
     if bullet2.x in range(red.x,red.x + 40) and bullet2.y in range(red.y, red.y + 40):
         collision.play()
         bullet2.shot = False
         bullet2.x = 810
         bullet2.y = 610
         heart2 -=1 
-        change2 = True
-    if change1 == True:
+        tt2 = True
+    if tt1 == True:
         score_1 = font.render("BLUE: " + str(heart1), True, (0, 0, 205))
-        change1 = False
-    if change2 == True:
+        tt1 = False
+    if tt2 == True:
         score_2 = font.render("RED: " + str(heart2), True, (225, 0, 0))
-        change2 = False
+        tt2 = False
     screen.fill((0, 255,0))
     screen.blit(score_1, (40, 10))
     screen.blit(score_2, (680, 10))
